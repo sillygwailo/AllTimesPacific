@@ -1,5 +1,5 @@
 {
-  "name": "MLB Game of the Day",
+  "name": "MLBGOTD",
   "version": "0.0.1",
   "description": "A bot that curates Major League Baseball games to watch, with days off.",
   "author": "Richard Eriksson <richard@justagwailo.com>",
