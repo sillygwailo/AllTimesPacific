@@ -55,9 +55,6 @@ var day = today.getDate();
 day = day < 10 ? '0' + day: day;
 
 var date = year.toString() + month.toString() + day.toString();
-// var date = '20140522'; // a date for testing
-
-console.log(date);
 
 var url = 'https://erikberg.com/events.json?date=' + date + '&sport=mlb';
 var headers = {
@@ -142,14 +139,15 @@ function tweetGame() {
   });
 }
 
-schedule.scheduleJob({hour: 11, minute: 15}, function() {
+schedule.scheduleJob({hour: 9, minute: 30}, function() {
   setTimeout(function() {
     tweetGame();
   }, Math.floor(Math.random() * 360000));
 });
 
-schedule.scheduleJob({hour: 15, minute: 45}, function() {
+schedule.scheduleJob({hour: 12, minute: 15}, function() {
   setTimeout(function() {
     tweetGame();
   }, Math.floor(Math.random() * 360000));
 });
+
