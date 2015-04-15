@@ -1,0 +1,10 @@
+{
+  "name": "MLB Game of the Day",
+  "version": "0.0.1",
+  "description": "A bot that curates Major League Baseball games to watch, with days off.",
+  "author": "Richard Eriksson <richard@justagwailo.com>",
+  "dependencies": {
+    "twit": "1.1.20",
+    "node-schedule": "1.1.20"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "MLB Game of the Day",
+  "description": "A bot that curates Major League Baseball games to watch, with days off.",
+  "keywords": [
+    "Twitter",
+    "MLB",
+    "baseball"
+  ],
+  "website": "http://notes.justagwailo.com/twitter/mlbgotd",
+  "repository": "https://github.com/sillygwailo/MLBGOTD",
+  "env": {
+    "XMLSTATS_ACCESS_TOKEN": {
+      "description": "xmlstats access token for sports scheduling and results, available from https://erikberg.com/api"
+    },
+    "TWITTER_ACCESS_TOKEN_KEY": {
+      "description": "Twitter access token key, available from https://apps.twitter.com/"
+    },
+    "TWITTER_ACCESS_TOKEN_SECRET": {
+      "description": "Twitter access token secret, available from https://apps.twitter.com/"
+    },
+    "TWITTER_CONSUMER_KEY": {
+      "description": "Twitter consumer key, available from https://apps.twitter.com/"
+    },
+    "TWITTER_CONSUMER_SECRET": {
+      "description": "Twitter consumer secret, available from https://apps.twitter.com/"  
+    }
+  }
+}
