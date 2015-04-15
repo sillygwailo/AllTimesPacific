@@ -1,7 +1,7 @@
 {
-  "name": "MLBGOTD",
+  "name": "AllTimesPacific",
   "version": "0.0.1",
-  "description": "A bot that curates Major League Baseball games to watch, with days off.",
+  "description": "A Twitter bot that curates Major League Baseball games to watch, with days off. All times Pacific.",
   "author": "Richard Eriksson <richard@justagwailo.com>",
   "dependencies": {
     "request": "2.55.0",
