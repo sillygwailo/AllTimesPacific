@@ -145,7 +145,7 @@ schedule.scheduleJob({hour: 9, minute: 30}, function() {
   }, Math.floor(Math.random() * 360000));
 });
 
-schedule.scheduleJob({hour: 12, minute: 15}, function() {
+schedule.scheduleJob({hour: 12, minute: 20}, function() {
   setTimeout(function() {
     tweetGame();
   }, Math.floor(Math.random() * 360000));
