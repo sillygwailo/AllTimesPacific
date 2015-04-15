@@ -105,6 +105,7 @@ function tweetGame(timeOfDay) {
         var random_game = games[random_game_id];
         var start_time_obj = new Date(random_game.start_date_time);
         var start_time = formatTime(start_time_obj);
+        // The following upper-casing of the first character is adapted from http://stackoverflow.com/a/1026087/300278
         text = timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1) + ' game to watch: ' + random_game.away_team.full_name + ' at ' + random_game.home_team.full_name;
         text += ' at ' + random_game.home_team.site_name;
         text += '. The game starts at ' + start_time + '.';

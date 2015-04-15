@@ -1,1 +1,1 @@
-node: node mlbgotd.js
+node: node alltimespacific.js
