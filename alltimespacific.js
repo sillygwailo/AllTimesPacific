@@ -100,20 +100,24 @@ function tweetGame(timeOfDay) {
       if (games.length === 0) {
         text = 'There are no ' + timeOfDay + ' games today.';
       }
-      random_game_id = getRandomInt(-1, games.length - 1);
-      if (random_game_id !== -1) {
-        var random_game = games[random_game_id];
-        var start_time_obj = new Date(random_game.start_date_time);
-        var start_time = formatTime(start_time_obj);
-        // The following upper-casing of the first character is adapted from http://stackoverflow.com/a/1026087/300278
-        text = timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1) + ' game to watch: ' + random_game.away_team.full_name + ' at ' + random_game.home_team.full_name;
-        text += ' at ' + random_game.home_team.site_name;
-        text += '. The game starts at ' + start_time + '.';
+      else { // there are games scheduled for this time period
+        var flip_result = Math.floor(Math.random() * (100 - 1)) + 1;
+        if (flip_result <= 80) { // 80% chance of choosing a game to watch
+          random_game_id = getRandomInt(0, games.length - 1);
+          var random_game = games[random_game_id];
+          var start_time_obj = new Date(random_game.start_date_time);
+          var start_time = formatTime(start_time_obj);
+          // The following upper-casing of the first character is adapted from http://stackoverflow.com/a/1026087/300278
+          text = timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1) + ' game to watch: ';
+          text += "The " + random_game.away_team.full_name + ' take on the ' + random_game.home_team.full_name;
+          text += ' at ' + random_game.home_team.site_name;
+          text += '. The game starts at ' + start_time + '.';
+        } // end 80% chance
+        else { // 20% chance of having the time period off from watching a game
+          text = 'You have the ' + timeOfDay + ' off from watching ballgames.';
+        }
       }
-      else {
-        text = 'You have the ' + timeOfDay + ' off from watching ballgames.';
-      }
-    }
+    } // there are games to watch
     console.log(text);
     T.post('statuses/update', { status: text }, function(err, reply) {
       console.log('error: ' + err);
