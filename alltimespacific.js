@@ -102,7 +102,7 @@ function tweetGame(timeOfDay) {
       }
       else { // there are games scheduled for this time period
         var flip_result = Math.floor(Math.random() * (100 - 1)) + 1;
-        if (flip_result <= 80) { // 80% chance of choosing a game to watch
+        if (flip_result <= 90) { // 90% chance of choosing a game to watch
           random_game_id = getRandomInt(0, games.length - 1);
           var random_game = games[random_game_id];
           var start_time_obj = new Date(random_game.start_date_time);
@@ -112,8 +112,8 @@ function tweetGame(timeOfDay) {
           text += "The " + random_game.away_team.full_name + ' take on the ' + random_game.home_team.full_name;
           text += ' at ' + random_game.home_team.site_name;
           text += '. The game starts at ' + start_time + '.';
-        } // end 80% chance
-        else { // 20% chance of having the time period off from watching a game
+        } // end 90% chance
+        else { // 10% chance of having the time period off from watching a game
           text = 'You have the ' + timeOfDay + ' off from watching ballgames.';
         }
       }
