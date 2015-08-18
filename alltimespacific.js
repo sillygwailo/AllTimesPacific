@@ -9,6 +9,8 @@ var T = new Twit({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
+var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+
 var access_token = process.env.XMLSTATS_ACCESS_TOKEN;
 
 var not_happening = [
@@ -78,6 +80,19 @@ function tweetGame(timeOfDay) {
 
   var random_game_id;
   req.get({ url: url, headers: headers}, function(req, res) {
+    if (res.statusCode == 401) {
+      console.log("Visit https://erikberg.com/account/token to renew the token.");
+      sendgrid.send({
+        to:       process.env.EMAIL_ADDRESS,
+        from:     process.env.EMAIL_ADDRESS,
+        subject:  'AllTimesPacific token',
+        text:     'Visit https://erikberg.com/account/token to renew the token.'
+      }, function(err, json) {
+        if (err) { return console.error(err); }
+        console.log(json);
+      });
+      return;
+    }
     var games = [];
     var text = '';
     var events_response = JSON.parse(res.body);
