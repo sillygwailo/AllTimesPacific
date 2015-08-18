@@ -9,7 +9,7 @@ var T = new Twit({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var sendgrid  = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+var sendgrid  = require('sendgrid')(process.env.SENDGRID_API_KEY);
 
 var access_token = process.env.XMLSTATS_ACCESS_TOKEN;
 
