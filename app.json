@@ -23,6 +23,15 @@
     },
     "TWITTER_CONSUMER_SECRET": {
       "description": "Twitter consumer secret, available from https://apps.twitter.com/"  
+    },
+    "SENDGRID_USERNAME": {
+      "description": "SendGrid username."
+    },
+    "SENDGRID_PASSWORD": {
+      "description": "SendGrid password."
+    },
+    "EMAIL_ADDRESS": {
+      "description": "Email address to send the token renewal reminder to."
     }
   }
 }
