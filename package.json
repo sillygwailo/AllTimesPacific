@@ -1,12 +1,12 @@
 {
   "name": "AllTimesPacific",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Twitter bot that curates Major League Baseball games to watch, with days off. All times Pacific.",
   "author": "Richard Eriksson <richard@justagwailo.com>",
   "dependencies": {
-    "request": "2.60.0",
-    "twit": "2.1.0",
-    "node-schedule": "0.2.9",
-    "sendgrid": "1.9.2"
+    "request": "2.69.0",
+    "twit": "2.2.3",
+    "node-schedule": "1.1.0",
+    "sendgrid": "2.0.0"
   }
 }
