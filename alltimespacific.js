@@ -40,6 +40,8 @@ function formatTime(d) {
   return h.toString() + ':' + m.toString() + ' ' + dd;
 }
 
+var teams_with_racist_names = ['CLE', 'ATL']
+
 // Get a random integer between min and max http://stackoverflow.com/a/12885196/300278
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
@@ -124,7 +126,21 @@ function tweetGame(timeOfDay) {
           var start_time = formatTime(start_time_obj);
           // The following upper-casing of the first character is adapted from http://stackoverflow.com/a/1026087/300278
           text = timeOfDay.charAt(0).toUpperCase() + timeOfDay.slice(1) + ' game to watch: ';
-          text += "The " + random_game.away_team.full_name + ' take on the ' + random_game.home_team.full_name;
+          if (teams_with_racist_names.indexOf(random_game.home_team.abbreviation) > -1) {
+            home_team_full_name = random_game.home_team.city + "’s baseball team";
+            verb = 'takes on';
+          }
+          else {
+            home_team_full_name = "The " + random_game.home_team.full_name;
+            verb = 'take on'
+          }
+          if (teams_with_racist_names.indexOf(random_game.away_team.abbreviation) > -1) {
+            away_team_full_name = random_game.away_team.city + "'s baseball team";
+          }
+          else {
+            away_team_full_name = "the " + random_game.away_team.full_name;
+          }
+          text += home_team_full_name + ' ' + verb + ' ' + away_team_full_name;
           text += ' at ' + random_game.home_team.site_name;
           text += '. The game starts at ' + start_time + '.';
         } // end 90% chance
