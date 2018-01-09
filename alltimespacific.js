@@ -9,8 +9,6 @@ var T = new Twit({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
-var sendgrid  = require('sendgrid')(process.env.SENDGRID_API_KEY);
-
 var access_token = process.env.XMLSTATS_ACCESS_TOKEN;
 
 var not_happening = [
@@ -84,15 +82,20 @@ function tweetGame(timeOfDay) {
   req.get({ url: url, headers: headers}, function(req, res) {
     if (res.statusCode == 401) {
       console.log("Visit https://erikberg.com/account/token to renew the token.");
-      sendgrid.send({
-        to:       process.env.EMAIL_ADDRESS,
-        from:     process.env.EMAIL_ADDRESS,
-        subject:  'AllTimesPacific token',
-        text:     'Visit https://erikberg.com/account/token to renew the token.'
-      }, function(err, json) {
-        if (err) { return console.error(err); }
-        console.log(json);
-      });
+      var sendgrid = require('@sendgrid/mail');
+      sendgrid.setApiKey(process.env.SENDGRID_API_KEY)
+      sendgrid_msg = {
+        to: process.env.EMAIL_ADDRESS,
+        from: process.env.EMAIL_ADDRESS,
+        subject: 'AllTimesPacific token',
+        html: 'Visit https://erikberg.com/account/token to renew the token.',
+        text: 'Visit <a href="https://erikberg.com/account/token">https://erikberg.com/account/token</a> to renew the token.',
+      };
+      sendgrid.send(sendgrid_msg)
+        .then(success => console.log(success))
+        .catch(error => {
+          console.log(error.response.body);
+        });;
       return;
     }
     var games = [];
